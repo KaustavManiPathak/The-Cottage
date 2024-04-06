@@ -1,0 +1,255 @@
+[gd_scene load_steps=18 format=3 uid="uid://cyxyym6xbnwl5"]
+
+[ext_resource type="Script" path="res://scripts/forest.gd" id="1_5hoxw"]
+[ext_resource type="PackedScene" uid="uid://bgseul1sfoqpf" path="res://textures/world_environment.tscn" id="1_rxab8"]
+[ext_resource type="PackedScene" uid="uid://cb81mfdc5qifd" path="res://scenes/house_ext.tscn" id="1_sfy50"]
+[ext_resource type="Texture2D" uid="uid://d2en2jcv6xhmn" path="res://textures/soil.jpg" id="2_e5fwt"]
+[ext_resource type="PackedScene" uid="uid://cvti7htpths5l" path="res://scenes/car.tscn" id="2_xgabe"]
+[ext_resource type="PackedScene" uid="uid://dmykjmrrx72vm" path="res://scenes/player.tscn" id="3_or427"]
+[ext_resource type="PackedScene" uid="uid://d2l5io5epys7d" path="res://scenes/trees.tscn" id="4_uyrn7"]
+[ext_resource type="Texture2D" uid="uid://5deel0lt3l1i" path="res://textures/road.jpg" id="7_364o4"]
+[ext_resource type="AudioStream" uid="uid://cxficd22udq6d" path="res://audio/wind.wav" id="9_tntj3"]
+
+[sub_resource type="Environment" id="Environment_36sgw"]
+background_energy_multiplier = 0.0
+tonemap_mode = 3
+fog_enabled = true
+fog_light_color = Color(0.223529, 0.258824, 0.258824, 1)
+fog_light_energy = 0.1
+fog_density = 0.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nm3tu"]
+albedo_color = Color(0.4, 0.290196, 0.258824, 1)
+albedo_texture = ExtResource("2_e5fwt")
+uv1_scale = Vector3(0.5, 0.25, 0)
+uv1_triplanar_sharpness = 0.554785
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_srwn3"]
+albedo_texture = ExtResource("7_364o4")
+metallic_specular = 1.0
+uv1_scale = Vector3(1, 3, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ylqmx"]
+size = Vector2(5, 20)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ojxc"]
+size = Vector3(0.2, 2, 5)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rv0gj"]
+size = Vector3(1, 2.58865, 0.2)
+
+[sub_resource type="SystemFont" id="SystemFont_q3vqw"]
+font_names = PackedStringArray("Calibri")
+
+[sub_resource type="SystemFont" id="SystemFont_ggf72"]
+font_names = PackedStringArray("Calibri")
+
+[node name="Forest" type="Node3D"]
+script = ExtResource("1_5hoxw")
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("1_rxab8")]
+environment = SubResource("Environment_36sgw")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_nm3tu")
+use_collision = true
+size = Vector3(15.8168, 1, 31.918)
+
+[node name="house_ext" parent="." instance=ExtResource("1_sfy50")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, -1.01372, 12.2369)
+
+[node name="car" parent="." instance=ExtResource("2_xgabe")]
+transform = Transform3D(-2.18557e-08, 0, -0.5, 0, 0.5, 0, 0.5, 0, -2.18557e-08, 0, 0.721802, -7.81227)
+
+[node name="Player" parent="." instance=ExtResource("3_or427")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.965272, -8.68399)
+
+[node name="Trees" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.131714, 0)
+
+[node name="trees" parent="Trees" instance=ExtResource("4_uyrn7")]
+transform = Transform3D(-0.185724, 0, -0.235598, 0, 0.3, 0, 0.235598, 0, -0.185724, 2.35465, 0.561596, -1.14246)
+
+[node name="trees18" parent="Trees" instance=ExtResource("4_uyrn7")]
+transform = Transform3D(-0.185724, 0, -0.235598, 0, 0.3, 0, 0.235598, 0, -0.185724, 1.0456, 0.561596, 1.72209)
+
+[node name="trees19" parent="Trees" instance=ExtResource("4_uyrn7")]
+transform = Transform3D(-0.185724, 0, -0.235598, 0, 0.3, 0, 0.235598, 0, -0.185724, -0.878096, 0.561596, 2.48058)
+
+[node name="trees4" parent="Trees" instance=ExtResource("4_uyrn7")]
+transform = Transform3D(-0.185724, 0, -0.235598, 0, 0.3, 0, 0.235598, 0, -0.185724, -3.33226, 0.561596, -0.462515)
+
+[node name="trees20" parent="Trees" instance=ExtResource("4_uyrn7")]
+transform = Transform3D(-0.185724, 0, -0.235598, 0, 0.3, 0, 0.235598, 0, -0.185724, -5.07415, 0.305335, 3.21973)
+
+[node name="trees22" parent="Trees" instance=ExtResource("4_uyrn7")]
+transform = Transform3D(-0.185724, 0, -0.235598, 0, 0.3, 0, 0.235598, 0, -0.185724, -4.11654, 0.305335, 6.49822)
+
+[node name="trees24" parent="Trees" instance=ExtResource("4_uyrn7")]
+transform = Transform3D(-0.185724, 0, -0.235598, 0, 0.3, 0, 0.235598, 0, -0.185724, 2.97192, 0.42593, 6.17664)
+
+[node name="trees25" parent="Trees" instance=ExtResource("4_uyrn7")]
+transform = Transform3D(-0.185724, 0, -0.235598, 0, 0.3, 0, 0.235598, 0, -0.185724, 0.75425, 0.42593, 4.18049)
+
+[node name="trees6" parent="Trees" instance=ExtResource("4_uyrn7")]
+transform = Transform3D(-0.185724, 0, -0.235598, 0, 0.3, 0, 0.235598, 0, -0.185724, 2.49839, 0.738045, -4.07201)
+
+[node name="trees7" parent="Trees" instance=ExtResource("4_uyrn7")]
+transform = Transform3D(-0.185724, 0, -0.235598, 0, 0.3, 0, 0.235598, 0, -0.185724, -2.02699, 0.561596, -3.78308)
+
+[node name="trees8" parent="Trees" instance=ExtResource("4_uyrn7")]
+transform = Transform3D(-0.185724, 0, -0.235598, 0, 0.3, 0, 0.235598, 0, -0.185724, -3.07361, 0.561596, -6.23952)
+
+[node name="trees15" parent="Trees" instance=ExtResource("4_uyrn7")]
+transform = Transform3D(-0.0951814, 0, 0.2845, 0, 0.3, 0, -0.2845, 0, -0.0951814, -5.95303, 0.561596, -6.92398)
+
+[node name="trees9" parent="Trees" instance=ExtResource("4_uyrn7")]
+transform = Transform3D(-0.185724, 0, -0.235598, 0, 0.3, 0, 0.235598, 0, -0.185724, 3.75183, 0.561596, -6.23952)
+
+[node name="trees16" parent="Trees" instance=ExtResource("4_uyrn7")]
+transform = Transform3D(-0.185724, 0, -0.235598, 0, 0.3, 0, 0.235598, 0, -0.185724, 5.77733, 0.37049, -6.48705)
+
+[node name="trees10" parent="Trees" instance=ExtResource("4_uyrn7")]
+transform = Transform3D(-0.0359215, 0, -0.297842, 0, 0.3, 0, 0.297842, 0, -0.0359215, -3.45503, 0.561596, -14.0733)
+
+[node name="trees14" parent="Trees" instance=ExtResource("4_uyrn7")]
+transform = Transform3D(-0.185724, 0, -0.235598, 0, 0.3, 0, 0.235598, 0, -0.185724, -5.99703, 0.561596, -13.0968)
+
+[node name="trees11" parent="Trees" instance=ExtResource("4_uyrn7")]
+transform = Transform3D(-0.27802, 0, -0.112717, 0, 0.3, 0, 0.112717, 0, -0.27802, 5.6321, 0.561596, -13.0672)
+
+[node name="trees12" parent="Trees" instance=ExtResource("4_uyrn7")]
+transform = Transform3D(0.0924461, 0, -0.285401, 0, 0.3, 0, 0.285401, 0, 0.0924461, -0.511431, 0.561596, -12.9035)
+
+[node name="trees13" parent="Trees" instance=ExtResource("4_uyrn7")]
+transform = Transform3D(-0.185724, 0, -0.235598, 0, 0.3, 0, 0.235598, 0, -0.185724, 2.44081, 0.561596, -13.762)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0.51, -9.72894)
+material_override = SubResource("StandardMaterial3D_srwn3")
+mesh = SubResource("PlaneMesh_ylqmx")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.63475, 1.42378, -9.74388)
+shape = SubResource("BoxShape3D_3ojxc")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.35919, 1.42378, -9.74388)
+shape = SubResource("BoxShape3D_3ojxc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.12251, 1.42378, -12.2965)
+shape = SubResource("BoxShape3D_3ojxc")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -5.12251, 1.42378, -7.18739)
+shape = SubResource("BoxShape3D_3ojxc")
+
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -2.68629, 1.42378, -4.68196)
+shape = SubResource("BoxShape3D_3ojxc")
+
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-0.898342, 0, 0.439297, 0, 1, 0, -0.439297, 0, -0.898342, -3.84067, 1.42378, 0.148476)
+shape = SubResource("BoxShape3D_3ojxc")
+
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-0.946941, 0, -0.321406, 0, 1, 0, 0.321406, 0, -0.946941, -4.13673, 1.42378, 4.76344)
+shape = SubResource("BoxShape3D_3ojxc")
+
+[node name="CollisionShape3D11" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-0.862337, 0, -0.506335, 0, 1, 0, 0.506335, 0, -0.862337, -2.42037, 1.42378, 8.80639)
+shape = SubResource("BoxShape3D_3ojxc")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.127521, 1.42378, -12.2965)
+shape = SubResource("BoxShape3D_3ojxc")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.89446, 1.42378, -12.2965)
+shape = SubResource("BoxShape3D_3ojxc")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 4.89446, 1.42378, -7.26037)
+shape = SubResource("BoxShape3D_3ojxc")
+
+[node name="CollisionShape3D12" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.4752, 1.42378, -4.71385)
+shape = SubResource("BoxShape3D_3ojxc")
+
+[node name="CollisionShape3D13" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.933436, 0, -0.358743, 0, 1, 0, 0.358743, 0, 0.933436, 1.54501, 1.42378, -0.218625)
+shape = SubResource("BoxShape3D_3ojxc")
+
+[node name="CollisionShape3D14" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.99806, 0, 0.0622676, 0, 1, 0, -0.0622676, 0, 0.99806, 0.85182, 1.42378, 4.22513)
+shape = SubResource("BoxShape3D_3ojxc")
+
+[node name="CollisionShape3D15" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.997014, 0, 0.0772236, 0, 1, 0, -0.0772236, 0, 0.997014, 1.13609, 1.42378, 8.30877)
+shape = SubResource("BoxShape3D_3ojxc")
+
+[node name="CollisionShape3D16" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(0.0772236, 0, -0.997014, 0, 1, 0, 0.997014, 0, 0.0772236, -0.688688, 1.42378, 9.17166)
+shape = SubResource("BoxShape3D_3ojxc")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.798617, 0.944531, 10.1532)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.924363, 0.55953, -1.22852)
+shape = SubResource("BoxShape3D_rv0gj")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextEdit" type="TextEdit" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -352.0
+offset_top = -109.5
+offset_right = 352.0
+offset_bottom = 109.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_q3vqw")
+theme_override_font_sizes/font_size = 30
+text = "
+"
+
+[node name="TextEdit2" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 894.0
+offset_top = 470.0
+offset_right = -332.0
+offset_bottom = -274.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_ggf72")
+text = "press W for Next
+"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_tntj3")
+volume_db = -6.0
+autoplay = true
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

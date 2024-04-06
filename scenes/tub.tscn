@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dy1kk1jbfa8eb"]
+
+[ext_resource type="PackedScene" uid="uid://bqqk5dx8jmqlv" path="res://models/tub.glb" id="1_53evb"]
+
+[node name="tub" instance=ExtResource("1_53evb")]

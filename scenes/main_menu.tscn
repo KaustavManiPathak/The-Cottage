@@ -1,0 +1,278 @@
+[gd_scene load_steps=13 format=3 uid="uid://ch2qwr6p7l6p5"]
+
+[ext_resource type="Script" path="res://scripts/main_menu.gd" id="1_li3v2"]
+[ext_resource type="PackedScene" uid="uid://cvti7htpths5l" path="res://scenes/car.tscn" id="3_83mhn"]
+[ext_resource type="Theme" uid="uid://c44qjfp7u262e" path="res://textures/text.tres" id="3_re1j4"]
+[ext_resource type="Theme" uid="uid://cn65ly56kij6u" path="res://textures/button.tres" id="4_cysiv"]
+[ext_resource type="PackedScene" uid="uid://cb81mfdc5qifd" path="res://scenes/house_ext.tscn" id="4_e52lr"]
+[ext_resource type="AudioStream" uid="uid://cxficd22udq6d" path="res://audio/wind.wav" id="6_je8x7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_brjud"]
+sky_top_color = Color(0, 0, 0, 1)
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_dvy17"]
+sky_material = SubResource("ProceduralSkyMaterial_brjud")
+
+[sub_resource type="Environment" id="Environment_lo4gj"]
+background_mode = 1
+sky = SubResource("Sky_dvy17")
+tonemap_mode = 2
+
+[sub_resource type="Animation" id="Animation_ge82h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WorldEnvironment:environment:background_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_04lls"]
+resource_name = "lightning"
+length = 5.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("WorldEnvironment:environment:background_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 2.1, 2.3, 3, 3.1, 3.2, 3.3, 3.4, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.454902, 0.454902, 0.454902, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0.454902, 0.454902, 0.454902, 1), Color(0, 0, 0, 1), Color(0.454902, 0.454902, 0.454902, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_q0ups"]
+_data = {
+"RESET": SubResource("Animation_ge82h"),
+"lightning": SubResource("Animation_04lls")
+}
+
+[node name="Main_Menu" type="Node3D"]
+script = ExtResource("1_li3v2")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_lo4gj")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.226209, 0, -0.974079, 0, 1, 0, 0.974079, 0, 0.226209, -2.10583, -1.52677, -0.0957345)
+
+[node name="Control" type="Control" parent="Camera3D"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -0.00390625
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="THE" type="RichTextLabel" parent="Camera3D/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.196
+anchor_top = 0.189
+anchor_right = 0.294
+anchor_bottom = 0.348
+offset_left = 1.26474
+offset_top = -0.152008
+offset_right = -0.602844
+offset_bottom = -0.264008
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_re1j4")
+theme_override_font_sizes/normal_font_size = 100
+text = "The
+"
+
+[node name="COTTAGE" type="RichTextLabel" parent="Camera3D/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.25
+anchor_right = 0.8
+anchor_bottom = 0.6
+offset_left = -0.499023
+offset_right = -0.0246582
+offset_bottom = 0.0239868
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_re1j4")
+theme_override_font_sizes/normal_font_size = 200
+text = " COTTAGE"
+
+[node name="AGAMEBY" type="RichTextLabel" parent="Camera3D/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.77
+anchor_top = 0.95
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+theme = ExtResource("3_re1j4")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 30
+text = "A  GAME BY KAUSTAV MANI"
+
+[node name="BOXContainer" type="VBoxContainer" parent="Camera3D/Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.611
+anchor_right = 0.402
+anchor_bottom = 1.0
+offset_top = -0.247986
+offset_right = -0.130432
+grow_vertical = 0
+theme = ExtResource("4_cysiv")
+theme_override_constants/separation = 10
+
+[node name="PLAY" type="Button" parent="Camera3D/Control/BOXContainer"]
+layout_mode = 2
+text = "PLAY
+"
+
+[node name="CONTROLS" type="Button" parent="Camera3D/Control/BOXContainer"]
+layout_mode = 2
+text = "CONTROLS
+"
+
+[node name="QUIT" type="Button" parent="Camera3D/Control/BOXContainer"]
+layout_mode = 2
+text = "QUIT
+"
+
+[node name="ColorRect" type="ColorRect" parent="Camera3D/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 156.0
+offset_top = 68.0
+offset_right = -110.0
+offset_bottom = -76.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera3D/Control/ColorRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+offset_left = -105.002
+offset_top = -23.7
+offset_right = 105.002
+offset_bottom = 23.7
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera3D/Control/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 600
+
+[node name="BACK" type="Button" parent="Camera3D/Control/ColorRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_cysiv")
+text = "MAIN MENU"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Camera3D/Control/ColorRect/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Camera3D/Control/ColorRect/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 500
+
+[node name="SENSITIVITY" type="RichTextLabel" parent="Camera3D/Control/ColorRect/VBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(230, 80)
+layout_mode = 2
+theme = ExtResource("3_re1j4")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "SENSITIVITY"
+
+[node name="HSlider" type="HSlider" parent="Camera3D/Control/ColorRect/VBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 120)
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Camera3D/Control/ColorRect/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 350
+
+[node name="CONTROLS" type="RichTextLabel" parent="Camera3D/Control/ColorRect/VBoxContainer/VBoxContainer/HBoxContainer2"]
+clip_contents = false
+custom_minimum_size = Vector2(400, 480)
+layout_mode = 2
+theme = ExtResource("3_re1j4")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "MOVEMENT
+
+CAMERA ROTATION 
+
+INTERACT 
+
+PAUSEMENU                         
+"
+
+[node name="CONTROLS2" type="RichTextLabel" parent="Camera3D/Control/ColorRect/VBoxContainer/VBoxContainer/HBoxContainer2"]
+clip_contents = false
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+theme = ExtResource("3_re1j4")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "W-A-S-D
+
+MOUSE
+
+LEFT CLICK
+
+TAB"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_q0ups")
+}
+
+[node name="car" parent="." instance=ExtResource("3_83mhn")]
+transform = Transform3D(0.162913, -0.038873, -0.985875, -1.60588e-09, 0.999224, -0.0393993, 0.986641, 0.00641865, 0.162786, -2.03857, -2.51654, -0.00263883)
+
+[node name="house_ext" parent="." instance=ExtResource("4_e52lr")]
+transform = Transform3D(0.106072, 0, -0.488619, 0, 0.5, 0, 0.488619, 0, 0.106072, 6.354, -2.75, -0.615)
+
+[node name="Door" parent="house_ext" index="4"]
+visible = false
+
+[node name="omni" parent="house_ext" index="5"]
+visible = false
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_je8x7")
+volume_db = -16.0
+autoplay = true
+
+[connection signal="pressed" from="Camera3D/Control/BOXContainer/PLAY" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Camera3D/Control/BOXContainer/CONTROLS" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="Camera3D/Control/BOXContainer/QUIT" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="Camera3D/Control/ColorRect/VBoxContainer/HBoxContainer/BACK" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="Camera3D/Control/ColorRect/VBoxContainer/VBoxContainer/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]
+
+[editable path="house_ext"]

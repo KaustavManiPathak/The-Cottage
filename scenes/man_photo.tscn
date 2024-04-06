@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://chgumg3pokj46"]
+
+[ext_resource type="Texture2D" uid="uid://ccrts1q6qh2vi" path="res://textures/the man photo.jpg" id="1_xm23i"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lv5pd"]
+size = Vector3(3.56934, 3.50639, 0.286571)
+
+[node name="man_photo" type="StaticBody3D" groups=["manphoto"]]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.79235, 0)
+shape = SubResource("BoxShape3D_lv5pd")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.77, 0)
+texture = ExtResource("1_xm23i")

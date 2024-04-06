@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://b325tmlxo1y3n"]
+
+[ext_resource type="Texture2D" uid="uid://c1gmaf0s1l6yv" path="res://textures/ehud-neuhaus-zTh49Vqo5Yk-unsplash.jpg" id="1_mg4op"]
+
+[resource]
+albedo_color = Color(0.215686, 0.113725, 0, 1)
+albedo_texture = ExtResource("1_mg4op")

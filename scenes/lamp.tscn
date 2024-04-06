@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cmxhklapvlq2"]
+
+[ext_resource type="PackedScene" uid="uid://bv8h0qmt1x7to" path="res://models/lamp.glb" id="1_e5tgg"]
+
+[node name="lamp" instance=ExtResource("1_e5tgg")]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="lamp_shade" index="0"]
+transform = Transform3D(1.76501, 0, 0, 0, 1.76501, 0, 0, 0, 1.76501, 0.101138, 3.09556, -0.386195)
+light_color = Color(1, 0.964706, 1, 1)
+light_energy = 0.1
+omni_range = 2.0

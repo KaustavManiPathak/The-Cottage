@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cn8dp1gys1i3k"]
+
+[ext_resource type="PackedScene" uid="uid://cf8wibapcges8" path="res://models/shower.glb" id="1_6ycby"]
+
+[node name="pipe" instance=ExtResource("1_6ycby")]

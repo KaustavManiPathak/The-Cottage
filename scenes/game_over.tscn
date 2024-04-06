@@ -1,0 +1,389 @@
+[gd_scene load_steps=19 format=3 uid="uid://cemd41wje8mjh"]
+
+[ext_resource type="Texture2D" uid="uid://5deel0lt3l1i" path="res://textures/road.jpg" id="1_3wter"]
+[ext_resource type="Script" path="res://scripts/game_over.gd" id="1_8eepu"]
+[ext_resource type="Texture2D" uid="uid://d2en2jcv6xhmn" path="res://textures/soil.jpg" id="1_auldl"]
+[ext_resource type="PackedScene" uid="uid://bgseul1sfoqpf" path="res://textures/world_environment.tscn" id="2_0cwne"]
+[ext_resource type="PackedScene" uid="uid://d2l5io5epys7d" path="res://scenes/trees.tscn" id="4_iewg0"]
+[ext_resource type="PackedScene" uid="uid://cvti7htpths5l" path="res://scenes/car.tscn" id="5_vuafn"]
+[ext_resource type="AudioStream" uid="uid://15i0ok0n7xh" path="res://audio/END SONG.wav" id="7_bnnhh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gl4hh"]
+albedo_color = Color(0.329412, 0.270588, 0.164706, 1)
+albedo_texture = ExtResource("1_auldl")
+metallic_specular = 0.0
+roughness = 0.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l38s7"]
+albedo_texture = ExtResource("1_3wter")
+metallic_specular = 0.0
+uv1_scale = Vector3(1, 3, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_wx0tf"]
+size = Vector2(5, 10)
+
+[sub_resource type="Animation" id="Animation_8lv42"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("moving:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("moving2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-9.97101, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("moving3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-19.8625, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("car:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(8.63093, 0.604496, 0.906115)]
+}
+
+[sub_resource type="Animation" id="Animation_vxw77"]
+resource_name = "going"
+length = 6.005
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("moving:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 2.2, 2.4, 2.6, 4, 6, 6.005),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(10.7598, 0, 0), Vector3(10.76, -5, 0), Vector3(-17.0747, -5, 0), Vector3(-16.0606, 0, 0), Vector3(-8.99955, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("moving2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2, 4, 4.2, 4.4, 4.6, 6, 6.005),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-9.97101, 0, 0), Vector3(0.788829, 0, 0), Vector3(10.85, 0, 0), Vector3(10.85, -5, 0), Vector3(-17.2495, -5, 0), Vector3(-16.204, 0, 0), Vector3(-10.05, 0, 0), Vector3(-9.97101, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("moving3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2, 4, 6, 6.005),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-19.8625, 0, 0), Vector3(-9.1027, 0, 0), Vector3(0.958345, 0, 0), Vector3(9.93174, 0, 0), Vector3(-19.8625, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("car:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 3.2, 3.5, 3.8, 5.2, 5.4, 5.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(8.63093, 0.604496, 0.906115), Vector3(8.63093, 0.604496, 0.906115), Vector3(8.631, 0.7, 0.906), Vector3(8.63093, 0.604496, 0.906115), Vector3(8.63093, 0.604496, 0.906115), Vector3(8.631, 0.7, 0.906), Vector3(8.63093, 0.604496, 0.906115), Vector3(8.63093, 0.604496, 0.906115), Vector3(8.631, 0.7, 0.906), Vector3(8.63093, 0.604496, 0.906115), Vector3(8.63093, 0.604496, 0.906115), Vector3(8.631, 0.7, 0.906), Vector3(8.63093, 0.604496, 0.906115)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8rb36"]
+_data = {
+"RESET": SubResource("Animation_8lv42"),
+"going": SubResource("Animation_vxw77")
+}
+
+[sub_resource type="SystemFont" id="SystemFont_7ed8o"]
+font_names = PackedStringArray("Calibri")
+
+[sub_resource type="SystemFont" id="SystemFont_xfpbk"]
+font_names = PackedStringArray("Calibri")
+
+[sub_resource type="Animation" id="Animation_bmspf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-24.0]
+}
+
+[sub_resource type="Animation" id="Animation_ahm2n"]
+resource_name = "open"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-24.0, -6.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wptoh"]
+_data = {
+"RESET": SubResource("Animation_bmspf"),
+"open": SubResource("Animation_ahm2n")
+}
+
+[node name="Game_over" type="Node3D"]
+script = ExtResource("1_8eepu")
+
+[node name="moon" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.722832, 0.0181127, -0.690786, -0.647505, 0.331395, 0.686233, 0.241352, 0.943318, -0.227815, -2.34928, 6.59259, 0)
+light_energy = 0.12
+shadow_enabled = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+material_override = SubResource("StandardMaterial3D_gl4hh")
+use_collision = true
+size = Vector3(20, 1, 8)
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("2_0cwne")]
+
+[node name="moving" type="Node3D" parent="."]
+
+[node name="road" type="MeshInstance3D" parent="moving"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.91578, 0.531519, 0)
+material_override = SubResource("StandardMaterial3D_l38s7")
+mesh = SubResource("PlaneMesh_wx0tf")
+skeleton = NodePath("../..")
+
+[node name="trees" parent="moving" instance=ExtResource("4_iewg0")]
+transform = Transform3D(-0.110413, 0, 0.278943, -0.0278886, 0.298497, -0.0110391, -0.277545, -0.0299939, -0.10986, 3.13084, 0, 2.75613)
+
+[node name="trees2" parent="moving" instance=ExtResource("4_iewg0")]
+transform = Transform3D(0.196612, 0, -0.226591, -0.0510144, 0.292298, -0.0442649, 0.220774, 0.0675414, 0.191564, 4.1575, 0, -2.44513)
+
+[node name="trees5" parent="moving" instance=ExtResource("4_iewg0")]
+transform = Transform3D(-0.110413, 0, 0.278943, -0.0278886, 0.298497, -0.0110391, -0.277545, -0.0299939, -0.10986, 5.40464, 0, 2.75613)
+
+[node name="trees6" parent="moving" instance=ExtResource("4_iewg0")]
+transform = Transform3D(0.196612, 0, -0.226591, -0.0510144, 0.292298, -0.0442649, 0.220774, 0.0675414, 0.191564, 6.43131, 0, -2.44513)
+
+[node name="trees3" parent="moving" instance=ExtResource("4_iewg0")]
+transform = Transform3D(-0.110413, 0, 0.278943, -0.0278886, 0.298497, -0.0110391, -0.277545, -0.0299939, -0.10986, -0.601928, 0.0146673, 2.75235)
+
+[node name="trees4" parent="moving" instance=ExtResource("4_iewg0")]
+transform = Transform3D(0.196612, 0, -0.226591, -0.0510144, 0.292298, -0.0442649, 0.220774, 0.0675414, 0.191564, 0.424736, 0.0146673, -2.44891)
+
+[node name="moving2" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.97101, 0, 0)
+
+[node name="road" type="MeshInstance3D" parent="moving2"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.91578, 0.531519, 0)
+material_override = SubResource("StandardMaterial3D_l38s7")
+mesh = SubResource("PlaneMesh_wx0tf")
+skeleton = NodePath("../..")
+
+[node name="trees" parent="moving2" instance=ExtResource("4_iewg0")]
+transform = Transform3D(-0.110413, 0, 0.278943, -0.0278886, 0.298497, -0.0110391, -0.277545, -0.0299939, -0.10986, 3.13084, 0, 2.75613)
+
+[node name="trees2" parent="moving2" instance=ExtResource("4_iewg0")]
+transform = Transform3D(0.196612, 0, -0.226591, -0.0510144, 0.292298, -0.0442649, 0.220774, 0.0675414, 0.191564, 4.1575, 0, -2.44513)
+
+[node name="trees5" parent="moving2" instance=ExtResource("4_iewg0")]
+transform = Transform3D(-0.110413, 0, 0.278943, -0.0278886, 0.298497, -0.0110391, -0.277545, -0.0299939, -0.10986, 5.40464, 0, 2.75613)
+
+[node name="trees6" parent="moving2" instance=ExtResource("4_iewg0")]
+transform = Transform3D(0.196612, 0, -0.226591, -0.0510144, 0.292298, -0.0442649, 0.220774, 0.0675414, 0.191564, 6.43131, 0, -2.44513)
+
+[node name="trees3" parent="moving2" instance=ExtResource("4_iewg0")]
+transform = Transform3D(-0.110413, 0, 0.278943, -0.0278886, 0.298497, -0.0110391, -0.277545, -0.0299939, -0.10986, -0.601928, 0.0146673, 2.75235)
+
+[node name="trees4" parent="moving2" instance=ExtResource("4_iewg0")]
+transform = Transform3D(0.196612, 0, -0.226591, -0.0510144, 0.292298, -0.0442649, 0.220774, 0.0675414, 0.191564, 0.424736, 0.0146673, -2.44891)
+
+[node name="moving3" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8625, 0, 0)
+
+[node name="road" type="MeshInstance3D" parent="moving3"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.91578, 0.531519, 0)
+material_override = SubResource("StandardMaterial3D_l38s7")
+mesh = SubResource("PlaneMesh_wx0tf")
+skeleton = NodePath("../..")
+
+[node name="trees" parent="moving3" instance=ExtResource("4_iewg0")]
+transform = Transform3D(-0.110413, 0, 0.278943, -0.0278886, 0.298497, -0.0110391, -0.277545, -0.0299939, -0.10986, 3.13084, 0, 2.75613)
+
+[node name="trees2" parent="moving3" instance=ExtResource("4_iewg0")]
+transform = Transform3D(0.196612, 0, -0.226591, -0.0510144, 0.292298, -0.0442649, 0.220774, 0.0675414, 0.191564, 4.1575, 0, -2.44513)
+
+[node name="trees5" parent="moving3" instance=ExtResource("4_iewg0")]
+transform = Transform3D(-0.110413, 0, 0.278943, -0.0278886, 0.298497, -0.0110391, -0.277545, -0.0299939, -0.10986, 5.40464, 0, 2.75613)
+
+[node name="trees6" parent="moving3" instance=ExtResource("4_iewg0")]
+transform = Transform3D(0.196612, 0, -0.226591, -0.0510144, 0.292298, -0.0442649, 0.220774, 0.0675414, 0.191564, 6.43131, 0, -2.44513)
+
+[node name="trees3" parent="moving3" instance=ExtResource("4_iewg0")]
+transform = Transform3D(-0.110413, 0, 0.278943, -0.0278886, 0.298497, -0.0110391, -0.277545, -0.0299939, -0.10986, -0.601928, 0.0146673, 2.75235)
+
+[node name="trees4" parent="moving3" instance=ExtResource("4_iewg0")]
+transform = Transform3D(0.196612, 0, -0.226591, -0.0510144, 0.292298, -0.0442649, 0.220774, 0.0675414, 0.191564, 0.424736, 0.0146673, -2.44891)
+
+[node name="car" parent="." instance=ExtResource("5_vuafn")]
+transform = Transform3D(-2.18557e-08, 0, 0.5, 0, 0.5, 0, -0.5, 0, -2.18557e-08, 8.63093, 0.604496, 0.906115)
+
+[node name="Camera3D" type="Camera3D" parent="car"]
+transform = Transform3D(1.99042, -0.0268404, -0.193627, 0.0124445, 1.99444, -0.148542, 0.195082, 0.146626, 1.98506, -0.167157, 1.04242, 0.386465)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="car"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.117, 0.73, -0.5)
+light_color = Color(1, 0.552941, 0.486275, 1)
+light_energy = 0.4
+omni_range = 0.25
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8rb36")
+}
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_bnnhh")
+volume_db = -24.0
+autoplay = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="TextEdit" type="TextEdit" parent="Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -352.0
+offset_top = -120.0
+offset_right = 352.0
+offset_bottom = 110.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = SubResource("SystemFont_7ed8o")
+theme_override_font_sizes/font_size = 30
+
+[node name="TextEdit2" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 894.0
+offset_top = 470.0
+offset_right = -332.0
+offset_bottom = -274.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_xfpbk")
+text = "press W for Next
+"
+
+[node name="TextEdit3" type="RichTextLabel" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1186.0
+offset_top = 727.0
+offset_right = -40.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/default_color = Color(1, 1, 0, 1)
+theme_override_fonts/normal_font = SubResource("SystemFont_xfpbk")
+text = "press S to exit"
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_wptoh")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer2" to="." method="_on_animation_player_2_animation_finished"]

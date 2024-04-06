@@ -1,0 +1,373 @@
+[gd_scene load_steps=26 format=3 uid="uid://dmykjmrrx72vm"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_jqnci"]
+[ext_resource type="PackedScene" uid="uid://be4rjd5osnua7" path="res://scenes/PAUSE_MENU.tscn" id="2_yk4xb"]
+[ext_resource type="Texture2D" uid="uid://d3r10cg2dqs5f" path="res://textures/broken-glass.png" id="3_3sh8g"]
+[ext_resource type="AudioStream" uid="uid://ch7sa50xbgf7q" path="res://audio/footstep_1.wav" id="3_updfv"]
+[ext_resource type="AudioStream" uid="uid://vtaiob37eitc" path="res://audio/footstep_3.wav" id="4_tqi1i"]
+[ext_resource type="AudioStream" uid="uid://bttf23y8sk3ka" path="res://audio/key.wav" id="5_lqabs"]
+[ext_resource type="AudioStream" uid="uid://c3d8wy7rctfsn" path="res://audio/pickup_can.wav" id="6_rjkhk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_scni6"]
+radius = 0.4
+height = 1.8
+
+[sub_resource type="SeparationRayShape3D" id="SeparationRayShape3D_7y3x0"]
+length = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8uqry"]
+size = Vector3(0.4, 1, 0.6)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s4s3i"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_t34dg"]
+size = Vector2(0.001, 0.001)
+orientation = 2
+
+[sub_resource type="SystemFont" id="SystemFont_ex7p0"]
+font_names = PackedStringArray("Calibri")
+
+[sub_resource type="SystemFont" id="SystemFont_25lcv"]
+font_names = PackedStringArray("Calibri")
+
+[sub_resource type="Animation" id="Animation_int5q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/SpotLight3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Footstep1:playing")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Footstep2:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Head/Camera3D/TextureRect:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Head/Camera3D/TextureRect:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ft5av"]
+resource_name = "camera wobble"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/SpotLight3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.25, 0.75),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.0261799, 0), Vector3(0, 0.0261799, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Head:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.65, 0), Vector3(0, 0.75, 0), Vector3(0, 0.65, 0), Vector3(0, 0.75, 0), Vector3(0, 0.65, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Footstep1:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.075),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Footstep2:playing")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.565),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_cag4a"]
+resource_name = "dying"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head/Camera3D/TextureRect:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"die"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Head/Camera3D/TextureRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_s8hem"]
+resource_name = "idle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Head:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0.65, 0), Vector3(0, 0.7, 0), Vector3(0, 0.65, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eculp"]
+_data = {
+"RESET": SubResource("Animation_int5q"),
+"camera wobble": SubResource("Animation_ft5av"),
+"dying": SubResource("Animation_cag4a"),
+"idle": SubResource("Animation_s8hem")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sy1pw"]
+animation = &"camera wobble"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_a35a5"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_hu6tf"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mv04d"]
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_w0c4j"]
+switch_mode = 1
+advance_mode = 2
+advance_condition = &"walk"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_f5k7l"]
+"states/camera wobble/node" = SubResource("AnimationNodeAnimation_sy1pw")
+"states/camera wobble/position" = Vector2(585.334, 92.6666)
+states/idle/node = SubResource("AnimationNodeAnimation_a35a5")
+states/idle/position = Vector2(364, 91.3333)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_hu6tf"), "camera wobble", "idle", SubResource("AnimationNodeStateMachineTransition_mv04d"), "idle", "camera wobble", SubResource("AnimationNodeStateMachineTransition_w0c4j")]
+
+[node name="Player" type="CharacterBody3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.448877, 0)
+collision_layer = 3
+safe_margin = 0.05
+script = ExtResource("1_jqnci")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_scni6")
+
+[node name="Ray_shape_F" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -0.44, -0.5, 0)
+shape = SubResource("SeparationRayShape3D_7y3x0")
+
+[node name="RayCast3D" type="RayCast3D" parent="Ray_shape_F"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+enabled = false
+target_position = Vector3(0, -0.55, 0)
+
+[node name="Head" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.65, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="Item_detect" type="Area3D" parent="Head/Camera3D"]
+visible = false
+collision_layer = 0
+collision_mask = 8
+monitoring = false
+monitorable = false
+
+[node name="CollisionPolygon3D" type="CollisionShape3D" parent="Head/Camera3D/Item_detect"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.154374, -0.508893)
+visible = false
+shape = SubResource("BoxShape3D_8uqry")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Head/Camera3D"]
+shadow_enabled = true
+shadow_bias = 0.5
+distance_fade_enabled = true
+spot_range = 3.0
+spot_angle = 30.0
+
+[node name="RayCast3D" type="RayCast3D" parent="Head/Camera3D"]
+target_position = Vector3(0, 0, -1.5)
+collision_mask = 8
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Head/Camera3D/RayCast3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.120282)
+material_overlay = SubResource("StandardMaterial3D_s4s3i")
+mesh = SubResource("PlaneMesh_t34dg")
+
+[node name="Label" type="Label" parent="Head/Camera3D/RayCast3D"]
+visible = false
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -11.5
+offset_right = 20.0
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 0.266667, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_fonts/font = SubResource("SystemFont_ex7p0")
+theme_override_font_sizes/font_size = 25
+text = "+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Head/Camera3D/RayCast3D"]
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.02
+anchor_right = 0.98
+anchor_bottom = 0.04
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme_override_colors/font_color = Color(1, 0.72549, 0, 1)
+theme_override_fonts/font = SubResource("SystemFont_25lcv")
+theme_override_font_sizes/font_size = 30
+text = "Fuel Cans Collected : 0"
+
+[node name="PAUSE" parent="Head/Camera3D" instance=ExtResource("2_yk4xb")]
+visible = false
+
+[node name="TextureRect" type="TextureRect" parent="Head/Camera3D"]
+visible = false
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_3sh8g")
+
+[node name="StairsBelowRay" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.897133, 0)
+target_position = Vector3(0, -0.5, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_eculp")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_f5k7l")
+anim_player = NodePath("../AnimationPlayer")
+parameters/conditions/idle = false
+parameters/conditions/walk = false
+
+[node name="Footstep1" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_updfv")
+volume_db = -3.0
+
+[node name="Footstep2" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_tqi1i")
+volume_db = -3.0
+
+[node name="keys" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_lqabs")
+
+[node name="gas_can" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_rjkhk")
+volume_db = 3.0
+
+[connection signal="body_entered" from="Head/Camera3D/Item_detect" to="." method="_on_item_detect_body_entered"]
+[connection signal="body_exited" from="Head/Camera3D/Item_detect" to="." method="_on_item_detect_body_exited"]

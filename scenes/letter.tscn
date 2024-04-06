@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkw5y52hgh7gx"]
+
+[ext_resource type="Texture2D" uid="uid://bsbulmhhrdros" path="res://textures/letter.png" id="1_wfwgd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ibml2"]
+size = Vector3(4.38946, 2.74548, 0.446832)
+
+[node name="Letter" type="StaticBody3D" groups=["letter"]]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.32139, 0)
+shape = SubResource("BoxShape3D_ibml2")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.31374, 0)
+texture = ExtResource("1_wfwgd")

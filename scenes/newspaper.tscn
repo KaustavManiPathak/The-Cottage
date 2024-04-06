@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://cekf3xbu80c7t"]
+
+[ext_resource type="Texture2D" uid="uid://c32nu5hidbt15" path="res://textures/newspaper article.jpg" id="1_fj6om"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ibjj2"]
+size = Vector3(6.4075, 3.46434, 0.306579)
+
+[node name="Newspaper" type="StaticBody3D" groups=["newspaper"]]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.83947, 0)
+shape = SubResource("BoxShape3D_ibjj2")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+texture = ExtResource("1_fj6om")

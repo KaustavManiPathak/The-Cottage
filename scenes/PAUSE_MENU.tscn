@@ -1,0 +1,109 @@
+[gd_scene load_steps=4 format=3 uid="uid://be4rjd5osnua7"]
+
+[ext_resource type="Script" path="res://scripts/PAUSE_MENU.gd" id="1_hipm7"]
+[ext_resource type="Theme" uid="uid://cn65ly56kij6u" path="res://textures/button.tres" id="1_nsuwm"]
+[ext_resource type="Theme" uid="uid://c44qjfp7u262e" path="res://textures/text.tres" id="2_7mld5"]
+
+[node name="PAUSE" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -10.0
+offset_top = -17.0
+offset_right = 29.0
+offset_bottom = 13.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+script = ExtResource("1_hipm7")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.95
+anchor_bottom = 0.95
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 600
+
+[node name="RESUME" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_nsuwm")
+text = "RESUME
+"
+
+[node name="BACK" type="Button" parent="Control/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("1_nsuwm")
+text = "MAIN MENU"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 500
+
+[node name="SENSITIVITY" type="RichTextLabel" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(230, 80)
+layout_mode = 2
+theme = ExtResource("2_7mld5")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "SENSITIVITY"
+
+[node name="HSlider" type="HSlider" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 120)
+layout_mode = 2
+min_value = 1.0
+max_value = 10.0
+value = 1.0
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 400
+
+[node name="CONTROLS" type="RichTextLabel" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer2"]
+clip_contents = false
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+theme = ExtResource("2_7mld5")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "MOVEMENT       
+
+CAMERA ROTATION   
+
+INTERACT                               
+"
+
+[node name="CONTROLS2" type="RichTextLabel" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer2"]
+clip_contents = false
+custom_minimum_size = Vector2(400, 400)
+layout_mode = 2
+theme = ExtResource("2_7mld5")
+theme_override_colors/default_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/normal_font_size = 50
+text = "W-A-S-D
+
+MOUSE
+
+LEFT CLICK"
+
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer/RESUME" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="Control/VBoxContainer/HBoxContainer/BACK" to="." method="_on_back_pressed"]
+[connection signal="value_changed" from="Control/VBoxContainer/VBoxContainer/HBoxContainer/HSlider" to="." method="_on_h_slider_value_changed"]

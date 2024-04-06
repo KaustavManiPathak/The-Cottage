@@ -1,0 +1,27 @@
+[gd_resource type="Theme" load_steps=7 format=3 uid="uid://cn65ly56kij6u"]
+
+[sub_resource type="SystemFont" id="SystemFont_j3dky"]
+font_names = PackedStringArray("Chiller")
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_brc5s"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wmwvw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dn4h0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lv0gd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_lotcl"]
+bg_color = Color(0.294118, 0, 0, 1)
+
+[resource]
+Button/colors/font_color = Color(1, 0, 0, 1)
+Button/colors/font_focus_color = Color(1, 0, 0, 1)
+Button/colors/font_hover_color = Color(1, 0.27451, 0.211765, 1)
+Button/font_sizes/font_size = 64
+Button/fonts/font = SubResource("SystemFont_j3dky")
+Button/styles/disabled = SubResource("StyleBoxEmpty_brc5s")
+Button/styles/focus = SubResource("StyleBoxEmpty_wmwvw")
+Button/styles/hover = SubResource("StyleBoxEmpty_dn4h0")
+Button/styles/normal = SubResource("StyleBoxEmpty_lv0gd")
+Button/styles/pressed = SubResource("StyleBoxFlat_lotcl")

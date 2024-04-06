@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://bgseul1sfoqpf"]
+
+[sub_resource type="Environment" id="Environment_5ff7t"]
+background_energy_multiplier = 0.0
+tonemap_mode = 3
+fog_light_color = Color(0.105882, 0.152941, 0.188235, 1)
+fog_light_energy = 0.5
+fog_density = 0.5
+
+[node name="WorldEnvironment" type="WorldEnvironment"]
+environment = SubResource("Environment_5ff7t")
